@@ -142,17 +142,17 @@ function pickDress() {
   return result;
 }
 
-let mechanicResponse = carMaintainance();
+// let mechanicResponse = carMaintainance();
 
-mechanicResponse
-  .then((text: string) => {
-    console.log(`Mechanic Response... ${text}`);
-    return pickDress();
-  })
-  .then((text: string) => {
-    console.log("Laundry Response... ", text);
-  })
-  .catch();
+// mechanicResponse
+//   .then((text: string) => {
+//     console.log(`Mechanic Response... ${text}`);
+//     return pickDress();
+//   })
+//   .then((text: string) => {
+//     console.log("Laundry Response... ", text);
+//   })
+//   .catch();
 
 //Another Approach
 // carMaintainance().then((text: string) => {
@@ -161,3 +161,23 @@ mechanicResponse
 //     console.log("Laundry Response... ", text);
 //   });
 // });
+
+//Resolve and Reject
+function promise(num: number) {
+  let result: Promise<string> = new Promise((resolve, reject) => {
+    if (num >= 5) {
+      resolve("Promise is resolved here...");
+    } else {
+      reject("Promise is rejected here...");
+    }
+  });
+  return result;
+}
+
+promise(4)
+  .then((text: string) => {
+    console.log("Resolved... ", text);
+  })
+  .catch((err) => {
+    console.log("Rejected... ", err);
+  });
