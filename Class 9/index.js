@@ -62,39 +62,55 @@
 // }, 2000);
 //========================
 //Callbacks
-function carMaintainance(callback) {
-    console.log("I left my car at 9 at workshop");
-    setTimeout(() => {
-        console.log("Car is fixed");
-        callback("Your car is ready to pickup");
-    }, 2000);
-}
-function pickDress(callback) {
-    setTimeout(() => {
-        console.log("Your dress is ready to pickup");
-        callback("Pick your dress");
-    }, 1000);
-}
-setTimeout(() => {
-    console.log("Do some grossery");
-}, 1000);
-function attendEvent(callback) {
-    setTimeout(() => {
-        console.log("You can now attend the event now!");
-        callback("Go home");
-    }, 2000);
-}
-function goHome() {
-    console.log("Reached Home");
-}
+// function carMaintainance(callback: (text: string) => void) {
+//   console.log("I left my car at 9 at workshop");
+//   setTimeout(() => {
+//     console.log("Car is fixed");
+//     callback("Your car is ready to pickup");
+//   }, 2000);
+// }
+// function pickDress(callback: (text: string) => void) {
+//   setTimeout(() => {
+//     console.log("Your dress is ready to pickup");
+//     callback("Pick your dress");
+//   }, 1000);
+// }
+// setTimeout(() => {
+//   console.log("Do some grossery");
+// }, 1000);
+// function attendEvent(callback: (text: string) => void) {
+//   setTimeout(() => {
+//     console.log("You can now attend the event now!");
+//     callback("Go home");
+//   }, 2000);
+// }
+// function goHome() {
+//   console.log("Reached Home");
+// }
 //Callback Hell problem (A pyramid)
-carMaintainance(function (text) {
-    console.log(`Car Maintaince Callback...... ${text}`);
-    pickDress(function (text) {
-        console.log("Dress callback... ", text);
-        attendEvent(function eventCallback(text) {
-            console.log("Event callback... ", text);
-            goHome();
-        });
+// carMaintainance(function (text: string) {
+//   console.log(`Car Maintaince Callback...... ${text}`);
+//   pickDress(function (text: string) {
+//     console.log("Dress callback... ", text);
+//     attendEvent(function eventCallback(text: string) {
+//       console.log("Event callback... ", text);
+//       goHome();
+//     });
+//   });
+// });
+//==========================================================
+//Promises
+function carMaintainance() {
+    console.log("I left my car at 9 at workshop");
+    let result = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Car is fixed");
+            resolve("Your car is ready to pickup"); // We use resolve instead of callbacks to get the resolved promises
+        }, 2000);
     });
+    return result;
+}
+let mechanicResponse = carMaintainance();
+mechanicResponse.then((text) => {
+    console.log(mechanicResponse);
 });
