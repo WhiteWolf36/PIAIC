@@ -135,5 +135,5 @@ function carMaintainance() {
 let mechanicResponse = carMaintainance();
 
 mechanicResponse.then((text: string) => {
-  console.log(mechanicResponse);
+  console.log(`mechanicResponse... ${text}`);
 });
