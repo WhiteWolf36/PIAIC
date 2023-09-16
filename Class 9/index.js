@@ -110,7 +110,29 @@ function carMaintainance() {
     });
     return result;
 }
+function pickDress() {
+    let result = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Your Dress is ready");
+            resolve("Pickup your dress");
+        }, 2000);
+    });
+    return result;
+}
 let mechanicResponse = carMaintainance();
-mechanicResponse.then((text) => {
-    console.log(`mechanicResponse... ${text}`);
-});
+mechanicResponse
+    .then((text) => {
+    console.log(`Mechanic Response... ${text}`);
+    return pickDress();
+})
+    .then((text) => {
+    console.log("Laundry Response... ", text);
+})
+    .catch();
+//Another Approach
+// carMaintainance().then((text: string) => {
+//   console.log("Mechanic Response... ", text);
+//   pickDress().then((text: string) => {
+//     console.log("Laundry Response... ", text);
+//   });
+// });
