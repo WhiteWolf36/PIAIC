@@ -122,7 +122,7 @@
 //Promises
 
 function carMaintainance() {
-  console.log("I left my car at 9 at workshop");
+  console.log("I left my car at 9 in workshop");
   let result: Promise<string> = new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log("Car is fixed");
