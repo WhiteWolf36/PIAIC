@@ -61,6 +61,7 @@
 //   console.log("Attend event");
 // }, 2000);
 //========================
+//Callbacks
 function carMaintainance(callback) {
     console.log("I left my car at 9 at workshop");
     setTimeout(() => {
@@ -77,15 +78,23 @@ function pickDress(callback) {
 setTimeout(() => {
     console.log("Do some grossery");
 }, 1000);
-function attendEvent() {
-    console.log("You can now attend the event now!");
+function attendEvent(callback) {
+    setTimeout(() => {
+        console.log("You can now attend the event now!");
+        callback("Go home");
+    }, 2000);
 }
-function carMainCallback(text) {
+function goHome() {
+    console.log("Reached Home");
+}
+//Callback Hell problem (A pyramid)
+carMaintainance(function (text) {
     console.log(`Car Maintaince Callback...... ${text}`);
-    pickDress(dressCallback); //We call it because we need the car to pick the dress and this function would only be called after the car is fixed
-}
-function dressCallback(text) {
-    console.log("Dress callback... ", text);
-    attendEvent();
-}
-carMaintainance(carMainCallback);
+    pickDress(function (text) {
+        console.log("Dress callback... ", text);
+        attendEvent(function eventCallback(text) {
+            console.log("Event callback... ", text);
+            goHome();
+        });
+    });
+});
