@@ -38,25 +38,54 @@
 //   console.log("this is a callback function ", text);
 // }
 // task1(callback);
-function carMaintainance() {
+// function carMaintainance() {
+//   console.log("I left my car at 9 at workshop");
+//   setTimeout(() => {
+//     console.log("Car is fixed");
+//     return "Your car is ready to pickup";
+//   }, 2000);
+// }
+// function pickDress() {
+//   setTimeout(() => {
+//     return "Your dress is ready to pickup";
+//   }, 1000);
+// }
+// let mechanicResponse = carMaintainance();
+// console.log(mechanicResponse);
+// setTimeout(() => {
+//   console.log("Do some grossery");
+// }, 2000);
+// let laundryResponse = pickDress();
+// console.log(laundryResponse);
+// setTimeout(() => {
+//   console.log("Attend event");
+// }, 2000);
+//========================
+function carMaintainance(callback) {
     console.log("I left my car at 9 at workshop");
     setTimeout(() => {
         console.log("Car is fixed");
-        return "Your car is ready to pickup";
+        callback("Your car is ready to pickup");
     }, 2000);
 }
-function pickDress() {
+function pickDress(callback) {
     setTimeout(() => {
-        return "Your dress is ready to pickup";
+        console.log("Your dress is ready to pickup");
+        callback("Pick your dress");
     }, 1000);
 }
-let mechanicResponse = carMaintainance();
-console.log(mechanicResponse);
 setTimeout(() => {
     console.log("Do some grossery");
-}, 2000);
-let laundryResponse = pickDress();
-console.log(laundryResponse);
-setTimeout(() => {
-    console.log("Attend event");
-}, 2000);
+}, 1000);
+function attendEvent() {
+    console.log("You can now attend the event now!");
+}
+function carMainCallback(text) {
+    console.log(`Car Maintaince Callback...... ${text}`);
+    pickDress(dressCallback); //We call it because we need the car to pick the dress and this function would only be called after the car is fixed
+}
+function dressCallback(text) {
+    console.log("Dress callback... ", text);
+    attendEvent();
+}
+carMaintainance(carMainCallback);
