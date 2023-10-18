@@ -49,6 +49,7 @@ numArray = array.filter((n) => {
 });
 console.log(numArray);
 
+console.log(1);
 array = [2, 4, 3, 7];
 console.log(
   array.reduce((acc, cur) => {
