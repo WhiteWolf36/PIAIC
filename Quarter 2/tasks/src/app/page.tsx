@@ -14,7 +14,9 @@ export default function Home() {
           ></Image>
         </div>
         <div className="mx-4 self-center text-center">
-          <h1 className="text-6xl font-bold text-blue-600 ">Modern Problems</h1>
+          <h1 className="text-6xl first-letter:text-yellow-600 font-bold text-blue-600 hover:text-gray-600 hover:cursor-pointer ">
+            Modern Problems
+          </h1>
           <h2 className="text-3xl font-semibold text-blue-400">
             Requires Modern Solution
           </h2>
