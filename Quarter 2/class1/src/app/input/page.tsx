@@ -11,7 +11,7 @@ function page() {
       </div>
       <div className="flex h-screen p-4 bg-blue-300 flex-wrap">
         <input type="text" className=" grow-[2]" />
-        <button className="bg-red-300 grow-[1]">Click Me</button>
+        <button className="bg-red-300 grow-[1] order-last">Click Me</button>
         <button className="bg-yellow-400 grow-[3]">Button 2</button>
       </div>
       <footer className="bg-gray-400 text-white text-clip text-center sticky bottom-0">
