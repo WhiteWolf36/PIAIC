@@ -3,7 +3,7 @@ import React from "react";
 function page() {
   return (
     <>
-      <div className="m-10 flex space-x-2 justify-center">
+      <div className="m-10 flex space-x-2 justify-center bg-gray-600">
         <button className="p-5 font-bold bg-red-300">card 1</button>
         <button className="p-5 font-bold bg-green-300">card 2</button>
         <button className="p-5 font-bold bg-blue-300">card 3</button>
